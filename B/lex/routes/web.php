@@ -15,8 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/onlineclass', 'OnlineController@index');
-Route::get('/onlineclass', ['uses'=>'OnlineController@index']);
+Route::get('/login', 'LoginController@index');
+Route::post('/login', 'LoginController@verify');
+Route::get('/home', 'HomeController@index');
+Route::get('/logout', 'LogoutController@index');
+
+
 
 
 

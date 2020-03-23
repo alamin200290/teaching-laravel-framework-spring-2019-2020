@@ -28,9 +28,9 @@ class Student{
 }
 
 
-$s1 = new Student('alamin','1709-1811-2');
-
-echo $s1->name;
+//$s1 = new Student('alamin','1709-1811-2');
+$s2 = new Student;
+echo $s2->name;
 
 
 

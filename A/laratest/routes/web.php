@@ -23,8 +23,8 @@ Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@verify');
 
 Route::get('/home', 'HomeController@index');
-Route::get('/home/view_users', 'HomeController@list');
-Route::get('/home/edit/{id}', 'HomeController@edit');
+Route::get('/admin/view_users', 'HomeController@list')->name('home.list');
+Route::get('/home/edit/{id}', ['as'=>'home.edit','uses'=>'HomeController@edit']);
 Route::get('/home/delete/{id}', 'HomeController@delete');
 Route::get('/logout', 'logoutController@index');
 

@@ -49,7 +49,6 @@ class HomeController extends Controller
 		return view('home.edit', $std);
 	}
 
-
 	function getStudentList (){
 		return [
 				['id'=>'12','name'=>'abc','cgpa'=>2.4,'dept'=>'CS'],

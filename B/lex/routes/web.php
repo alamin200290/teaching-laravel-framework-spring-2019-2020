@@ -30,7 +30,3 @@ Route::get('/home/delete/{id}', 'HomeController@delete')->name('home.delete');
 Route::post('/home/delete/{id}', 'HomeController@destroy');
 
 
-
-
-
-

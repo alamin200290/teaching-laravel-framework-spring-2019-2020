@@ -6,11 +6,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index(Request $req){
 
 		//$data = array('name'=>'alamin', 'type'=> 'admin');    	
 		//$data = ['name'=>'alamin', 'type'=> 'admin']; 
-    	return view('home.index');
 
 /*    	return view('home.index')
     			->with('name', 'alamin')
@@ -24,6 +23,29 @@ class HomeController extends Controller
     	$v->withName('alamin');
     	$v->withType('admin');
     	return $v;*/
+
+        //session 
+        
+        /*
+        $req->session()->put('username', 'alamin');
+        $req->session()->put('password', 'aaaa');
+        $data = $req->session()->get('username');
+        $req->session()->forget('username');
+        $req->session()->flush();
+        $req->session()->flash('msg', 'invalid username/password');
+        $req->session()->flash('error', 'invalid');
+        $req->session()->keep('msg');
+        $req->session()->reflash();
+        $req->session()->pull('username');
+        //$data = $req->session()->all();
+        if($req->session()->has('username')){
+        }*/
+
+        //session('cgpa', 4);
+
+        return view('home.index');
+
+
     }
 
     public function list(){

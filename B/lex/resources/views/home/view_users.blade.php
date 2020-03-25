@@ -6,7 +6,7 @@
 <body>	
 
 	<h1>User list</h1>&nbsp
-	<a href="/home">Back</a> |
+	<a href="{{route('home.index')}}">Back</a> |
 	<a href="/logout">Logout</a> 
 
 	<br>
@@ -31,9 +31,9 @@
 			<td>{{ $s['id'] }}</td>
 			<td>{{ $s['name'] }}</td>
 			<td>
-				<a href="/details/{{ $s['id'] }}">DETAILS</a> |
-				<a href="/edit/{{ $s['id'] }}">EDIT</a> |
-				<a href="/delete/{{ $s['id'] }}">DELETE</a>
+				<a href="{{route('home.show', $s['id'])}}">DETAILS</a> |
+				<a href="{{route('home.edit', $s['id'])}}">EDIT</a> |
+				<a href="{{route('home.delete', $s['id'])}}">DELETE</a>
 			</td>
 		</tr>
 		@endforeach

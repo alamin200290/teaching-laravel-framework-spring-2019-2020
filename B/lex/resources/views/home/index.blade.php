@@ -6,11 +6,12 @@
 <body>	
 
 	<h1>Welcome Home!</h1>&nbsp
-	<a href="/logout">Logout</a>
+	<a href="/create">Create user</a> |
+	<a href="/home/view_users">View Users</a> |
+	<a href="/logout">Logout</a> 
 
 	<br>
-	Name: {{$name}} <br>
-	Type: {{$type}}
+
 
 </body>
 </html>

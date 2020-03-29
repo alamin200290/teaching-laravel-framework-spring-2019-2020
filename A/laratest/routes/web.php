@@ -21,16 +21,12 @@ Route::get('/home', function(){
 
 Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@verify');
-
 Route::get('/home', 'HomeController@index')->name('home.index');
 Route::get('/home/view_users', 'HomeController@list')->name('home.list');
 Route::get('/home/details/{id}', 'HomeController@show')->name('home.show');
-
 Route::get('/home/edit/{id}', ['as'=>'home.edit','uses'=>'HomeController@edit']);
 Route::post('/home/edit/{id}', 'HomeController@update');
-
 Route::get('/home/delete/{id}', 'HomeController@delete')->name('home.delete');
 Route::post('/home/delete/{id}', 'HomeController@destroy')->name('home.destroy');
-
 Route::get('/logout', 'logoutController@index');
 

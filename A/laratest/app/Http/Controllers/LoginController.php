@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -13,8 +14,21 @@ class LoginController extends Controller
 
     public function verify(Request $req){
     	
-    	if($req->uname == $req->password){
+ /*       $req->uname 
+        $req->password*/
 
+        //$data = User::all();
+
+/*        $user = User::where('username', $req->uname)
+                    ->where('password', $req->password)
+                    ->first();*/
+
+        $user = DB::table('users')
+                    ->where('username', $req->uname)
+                    ->where('password', $req->password)
+                    ->first();
+
+    	if($user != null){
             $req->session()->put('uname', $req->uname);
     		return redirect()->route('home.index');
 

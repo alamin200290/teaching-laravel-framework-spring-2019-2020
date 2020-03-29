@@ -13,5 +13,7 @@
 		Password: <input type="password" name="password" ><br>
 		<input type="submit" name="submit" value="Submit" >
 	</form>
+
+	<h3>{{session('msg')}}</h3>
 </body>
 </html>

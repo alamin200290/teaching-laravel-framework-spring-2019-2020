@@ -6,7 +6,7 @@
 <body>	
 
 	<h1>Welcome Home!</h1>&nbsp
-	<a href="/home">back</a> |
+	<a href="{{route('home.index')}}">back</a> |
 	<a href="/logout">Logout</a> 
 
 	<table border="1">

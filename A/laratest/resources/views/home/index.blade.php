@@ -5,7 +5,8 @@
 </head>
 <body>	
 
-	<h1>Welcome Home!</h1>&nbsp
+	<h1>Welcome Home! {{session('xyz')}}</h1>&nbsp
+
 	<a href="/create">Create User</a> |
 	<a href="{{route('home.list')}}">View Users</a> |
 	<a href="/logout">Logout</a> 

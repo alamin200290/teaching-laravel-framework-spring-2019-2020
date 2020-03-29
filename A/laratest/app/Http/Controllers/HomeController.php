@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-	public function index(){
+	public function index(Request $req){
 
 		//$data = ['id'=>'11-11-1', 'name'=>'amin', 'dept'=>'CSE'];
 		//return view('home.index', $data);
@@ -27,13 +27,30 @@ class HomeController extends Controller
 		$v->withDept('CIS');
 		return $v;*/
 
-		return view('home.index');
-	}    
 
-	public function list(){
+		//$req->session()->put('uname', 'alamin');
+		//$req->session()->put('password', '123');
+		//$user = $req->session()->get('uname');
+		//$pass = $req->session()->get('password');
+		//$data = $req->session()->all();
+		//$data = $req->session()->pull('uname');
+		//$req->session()->forget('uname');
+		//$req->session()->flush();
+		//$req->session()->has('uname');
+		//$req->session()->flash('cgpa', '4');
+		//$req->session()->flash('abc', '4');
+		//$req->session()->keep('cgpa');
+		//$req->session()->reflash();
+		
+		if($req->session()->has('uname')){
+			return view('home.index');
+		}else{
+			return redirect('/login');
+		}
+	}   
 
-		$students = $this->getStudentList();
-		return view('home.view_users', ['stds'=> $students]);
+	public function show($id){
+
 	}
 
 	public function edit($id, Request $req){
@@ -47,6 +64,24 @@ class HomeController extends Controller
 			}
 		}
 		return view('home.edit', $std);
+	}
+
+	public function update($id, Request $req){
+
+	}
+
+	public function delete($id){
+
+	}	
+
+	public function destroy($id){
+
+	}
+
+	public function list(){
+
+		$students = $this->getStudentList();
+		return view('home.view_users', ['stds'=> $students]);
 	}
 
 	function getStudentList (){

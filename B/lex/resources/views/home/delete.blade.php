@@ -36,6 +36,11 @@
 			<td>{{$type}}</td>
 		</tr>
 	</table>
-
+	<h3>Are you sure? This can't be undone...</h3>
+	<form method="post">
+		{{csrf_field()}}
+		<input type="hidden" name="userId" value="{{$userId}}"/>
+		<input type="submit" name="submit" value="Confirm"/>
+	</form>
 </body>
 </html>

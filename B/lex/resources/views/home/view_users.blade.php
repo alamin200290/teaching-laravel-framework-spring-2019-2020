@@ -13,7 +13,7 @@
 	<table border="1">
 		<tr>
 			<th>ID</th>
-			<th>NAME</th>
+			<th>USERNAME</th>
 			<th>ACTION</th>
 		</tr>
 
@@ -28,12 +28,12 @@
 		
 		@foreach($std as $s)
 		<tr>
-			<td>{{ $s['id'] }}</td>
-			<td>{{ $s['name'] }}</td>
+			<td>{{ $s['userId'] }}</td>
+			<td>{{ $s['username'] }}</td>
 			<td>
-				<a href="{{route('home.show', $s['id'])}}">DETAILS</a> |
-				<a href="{{route('home.edit', $s['id'])}}">EDIT</a> |
-				<a href="{{route('home.delete', $s['id'])}}">DELETE</a>
+				<a href="{{route('home.show', $s['userId'])}}">DETAILS</a> |
+				<a href="{{route('home.edit', $s['userId'])}}">EDIT</a> |
+				<a href="{{route('home.delete', $s['userId'])}}">DELETE</a>
 			</td>
 		</tr>
 		@endforeach

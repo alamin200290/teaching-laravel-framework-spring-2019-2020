@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facdes\DB;
 
 class HomeController extends Controller
 {
@@ -44,50 +46,82 @@ class HomeController extends Controller
         //session('cgpa', 4);
 
         return view('home.index');
-
-
-    }
-
-    public function list(){
-
-        $students = $this->getStudentList();
-        return view('home.view_users', ['std'=>$students]);
     }
 
     public function show($id){
-        $students = $this->getStudentList();
+        /*$students = $this->getStudentList();
         $s="";
         foreach ($students as $std) {
             if($std['id'] == $id){
                 $s = $std;
                 break;
             }
-        }
+        }*/
+
+        $s = User::find($id);
         return view('home.show', $s);
     }
 
     public function add(){
 
+        return view('home.add');
     }
 
-    public function create($id, Request $req){
-
+    public function create(Request $req){
+        $user = new User();
+        $user->username = $req->username;
+        $user->password = $req->password;
+        $user->name     = $req->name;
+        $user->cgpa     = $req->cgpa;
+        $user->dept     = $req->dept;
+        $user->type     = $req->type;
+        
+        if($user->save()){
+            return redirect()->route('home.list');
+        }else{
+            return redirect()->route('home.add');
+        }
     }
 
     public function edit($id){
 
+        $user = User::find($id);
+        return view('home.edit', $user);
     }
 
     public function update($id, Request $req){
 
+        $user = User::find($id);
+        $user->username = $req->username;
+        $user->password = $req->password;
+        $user->name     = $req->name;
+        $user->cgpa     = $req->cgpa;
+        $user->dept     = $req->dept;
+        $user->type     = $req->type;
+
+        if($user->save()){
+            return redirect()->route('home.list');
+        }else{
+            return redirect()->route('home.edit', $id);
+        }
     }
 
     public function delete($id){
-
+        $user = User::find($id);
+        return view('home.delete', $user);
     }
 
     public function destroy($id, Request $req){
+        if(User::destroy($req->userId)){
+            return redirect()->route('home.list');
+        }else{
+            return redirect()->route('home.delete', $id);
+        }
+    }
 
+    public function list(){
+        $users = User::all();
+        return view('home.view_users', ['std'=>$users]);
     }
 
     public function getStudentList(){

@@ -36,10 +36,8 @@ Route::group(['middleware'=>['sess']], function(){
 		Route::post('/home/edit/{id}', 'HomeController@update');
 		Route::get('/home/delete/{id}', 'HomeController@delete')->name('home.delete');
 		Route::post('/home/delete/{id}', 'HomeController@destroy')->name('home.destroy');
+		Route::resource('account', 'AccountController');
 	});
 });
 
-
-
-Route::resource('account', 'AccountController')->middleware('sess');
-Route::resource('accounttype', 'AccounttypeController');
+Route::resource('accounttype', 'AccounttypeController')->middleware('sess');

@@ -10,4 +10,5 @@ class User extends Model
     public $timestamps = false;
     //const $CREATED_AT = 'create_time';
     //const $UPDATED_AT = 'updated_time';
+    protected $primaryKey = "userId";
 }

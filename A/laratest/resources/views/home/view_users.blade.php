@@ -18,18 +18,19 @@
 			<th>Action</th>
 		</tr>
 		
-		@for($i=0; $i< count($stds); $i++)
+		@foreach($users as $user)
 		<tr>
-			<td>{{$stds[$i]['id']}}</td>
-			<td>{{$stds[$i]['name']}}</td>
-			<td>{{$stds[$i]['cgpa']}}</td>
-			<td>{{$stds[$i]['dept']}}</td>
+			<td>{{$user['userId']}}</td>
+			<td>{{$user['name']}}</td>
+			<td>{{$user['cgpa']}}</td>
+			<td>{{$user['dept']}}</td>
 			<td>
-				<a href="/home/edit/{{$stds[$i]['id']}}">Edit</a> | 
-				<a href="/home/delete/{{$stds[$i]['id']}}">Delete</a> 
+				<a href="{{route('home.edit', $user['userId'])}}">Edit</a> | 
+				<a href="{{route('home.delete', $user['userId'])}}">Delete</a> |
+				<a href="{{route('home.show', $user['userId'])}}">Details</a> 
 			</td>
 		</tr>
-		@endfor
+		@endforeach
 	</table>
 
 </body>

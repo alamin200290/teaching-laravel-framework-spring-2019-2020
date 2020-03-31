@@ -7,6 +7,7 @@ use App\User;
 
 class HomeController extends Controller
 {
+
 	public function index(Request $req){
 
 		//$data = ['id'=>'11-11-1', 'name'=>'amin', 'dept'=>'CSE'];

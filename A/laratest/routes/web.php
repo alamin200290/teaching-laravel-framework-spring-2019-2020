@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/mywebsite', 'WebsiteController@index');
+
 Route::get('/', function () {
     return view('welcome');
 });

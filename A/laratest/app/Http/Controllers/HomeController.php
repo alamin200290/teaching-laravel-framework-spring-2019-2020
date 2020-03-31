@@ -63,7 +63,7 @@ class HomeController extends Controller
 		return view('home.add');
 	}
 
-	public function insert(HomeRequest $req){
+	public function insert(Request $req){
 
 		/*$req->validate([
 			'username'=>'bail|required|min:5|unique:users',
@@ -111,6 +111,23 @@ class HomeController extends Controller
 		}else{
 			return redirect()->route('home.add');
 		}*/
+
+		if($req->hasFile('pic')){
+			$file = $req->file('pic');
+			echo "File Name: ". $file->getClientOriginalName()."<br>";
+			echo "File Extension: ". $file->getClientOriginalExtension()."<br>";
+			echo "File Size: ". $file->getSize()."<br>";
+			echo "File Mime Type: ". $file->getMimeType();
+
+			if($file->move('upload', "abc.".$file->getClientOriginalExtension())){
+				echo "<h1>success</h1>";
+			}else{
+				echo "<h1>Error!</h1>";
+			}
+
+		}else{
+			echo "File not found!";
+		}
 	}
 
 	public function edit($id){

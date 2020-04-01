@@ -19,16 +19,21 @@ Route::get('/login', 'LoginController@index');
 Route::post('/login', 'LoginController@verify');
 Route::get('/logout', 'LogoutController@index');
 
-Route::get('/home', 'HomeController@index')->name('home.index');
 
-Route::get('/home/add', 'HomeController@add')->name('home.add');
-Route::post('/home/add', 'HomeController@create');
+Route::group(['middleware'=>['sess']], function(){
 
-Route::get('/home/view_users', 'HomeController@list')->name('home.list');
-Route::get('/home/details/{id}', ['as'=>'home.show','uses'=>'HomeController@show']);
+	Route::get('/home', 'HomeController@index')->name('home.index');
+	Route::get('/home/view_users', 'HomeController@list')->name('home.list')->middleware('sess');
+	Route::get('/home/details/{id}', ['as'=>'home.show','uses'=>'HomeController@show']);
 
-Route::get('/home/edit/{id}', 'HomeController@edit')->name('home.edit');
-Route::post('/home/edit/{id}', 'HomeController@update');
+	Route:group(['middleware'=>['type']], function(){
+		Route::get('/home/add', 'HomeController@add')->name('home.add')->middleware('sess');
+		Route::post('/home/add', 'HomeController@create');
+		Route::get('/home/edit/{id}', 'HomeController@edit')->name('home.edit');
+		Route::post('/home/edit/{id}', 'HomeController@update');
+		Route::get('/home/delete/{id}', 'HomeController@delete')->name('home.delete');
+		Route::post('/home/delete/{id}', 'HomeController@destroy');
+	});
+});
 
-Route::get('/home/delete/{id}', 'HomeController@delete')->name('home.delete');
-Route::post('/home/delete/{id}', 'HomeController@destroy');
+

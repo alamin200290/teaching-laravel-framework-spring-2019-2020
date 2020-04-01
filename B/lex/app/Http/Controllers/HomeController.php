@@ -8,6 +8,7 @@ use Illuminate\Support\Facdes\DB;
 
 class HomeController extends Controller
 {
+
     public function index(Request $req){
 
 		//$data = array('name'=>'alamin', 'type'=> 'admin');    	
@@ -45,6 +46,10 @@ class HomeController extends Controller
 
         //session('cgpa', 4);
 
+        if(!$req->session()->has('username')){
+            return redirect('/login');
+        }
+
         return view('home.index');
     }
 
@@ -63,7 +68,6 @@ class HomeController extends Controller
     }
 
     public function add(){
-
         return view('home.add');
     }
 
@@ -84,7 +88,6 @@ class HomeController extends Controller
     }
 
     public function edit($id){
-
         $user = User::find($id);
         return view('home.edit', $user);
     }

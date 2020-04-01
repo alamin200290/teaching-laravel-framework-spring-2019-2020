@@ -73,7 +73,24 @@ class HomeController extends Controller
         return view('home.add');
     }
 
-    public function create(UserRequest $req){
+    public function create(Request $req){
+
+
+        if($req->hasFile('pic')){
+            $file = $req->file('pic');
+
+            echo "File Name: ".$file->getClientOriginalName()."<br>";
+            echo "File Extension: ".$file->getClientOriginalExtension()."<br>";
+            echo "File Size: ".$file->getSize()."<br>";
+            echo "File Mime Type: ".$file->getMimeType();
+
+            if($file->move('upload', $file->getClientOriginalName())){
+                echo "<h2>Success</h2>";
+            }else{
+                echo "<h2>Error</h2>";
+            }
+        }
+
 
        /* $req->validate([
             'username'=>'bail|required|min:4|unique:users',

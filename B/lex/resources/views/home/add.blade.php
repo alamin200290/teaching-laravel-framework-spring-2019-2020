@@ -10,7 +10,7 @@
 	<a href="/logout">Logout</a> 
 
 	<br>
-	<form method="post">
+	<form method="post" enctype="multipart/form-data">
 
 		{{csrf_field()}}
 		<table border="1">
@@ -37,6 +37,10 @@
 			<tr>
 				<td>Type</td>
 				<td><input type="text"  name="type" value="{{old('type')}}"></td>
+			</tr>
+			<tr>
+				<td>Image</td>
+				<td><input type="file"  name="pic" value=""></td>
 			</tr>
 			<tr>
 				<td></td>

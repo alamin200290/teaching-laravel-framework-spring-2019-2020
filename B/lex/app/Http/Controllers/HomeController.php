@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facdes\DB;
+use Validator;
+use App\Http\Requests\UserRequest;
 
 class HomeController extends Controller
 {
@@ -71,8 +73,43 @@ class HomeController extends Controller
         return view('home.add');
     }
 
-    public function create(Request $req){
-        $user = new User();
+    public function create(UserRequest $req){
+
+       /* $req->validate([
+            'username'=>'bail|required|min:4|unique:users',
+            'password'=>'required',
+            'cgpa'=>'required',
+            'name'=>'required|email'
+        ]);*/
+
+/*    
+        $validation = $this->validate($req, [
+            'username'=>'required',
+            'password'=>'required',
+            'cgpa'=>'required',
+            'name'=>'required'
+        ])->validate();
+
+        //$validation->validate();*/
+
+        /*$validation = Validator::make($req->all(), [
+            'username'=>'required',
+            'password'=>'required',
+            'cgpa'=>'required',
+            'name'=>'required'
+        ]);
+
+        if($validation->fails()){
+            return back()
+                    ->with('errors', $validation->errors())
+                    ->withInput();
+            return redirect()->route('home.add')
+                            ->with('errors', $validation->errors())
+                            ->withInput();
+        }*/
+
+
+/*        $user = new User();
         $user->username = $req->username;
         $user->password = $req->password;
         $user->name     = $req->name;
@@ -84,7 +121,7 @@ class HomeController extends Controller
             return redirect()->route('home.list');
         }else{
             return redirect()->route('home.add');
-        }
+        }*/
     }
 
     public function edit($id){

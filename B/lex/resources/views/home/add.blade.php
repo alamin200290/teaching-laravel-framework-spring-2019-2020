@@ -16,27 +16,27 @@
 		<table border="1">
 			<tr>
 				<td>Username</td>
-				<td><input type="text"  name="username" value=""></td>
+				<td><input type="text"  name="username" value="{{old('username')}}"></td>
 			</tr>
 			<tr>
 				<td>Name</td>
-				<td><input type="text"  name="name" value=""></td>
+				<td><input type="text"  name="name" value="{{old('name')}}"></td>
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td><input type="password"  name="password" value=""></td>
+				<td><input type="password"  name="password" value="{{old('password')}}"></td>
 			</tr>
 			<tr>
 				<td>CGPA</td>
-				<td><input type="text"  name="cgpa" value=""></td>
+				<td><input type="text"  name="cgpa" value="{{old('cgpa')}}"></td>
 			</tr>
 			<tr>
 				<td>DEPT</td>
-				<td><input type="text"  name="dept" value=""></td>
+				<td><input type="text"  name="dept" value="{{old('dept')}}"></td>
 			</tr>
 			<tr>
 				<td>Type</td>
-				<td><input type="text"  name="type" value=""></td>
+				<td><input type="text"  name="type" value="{{old('type')}}"></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -44,6 +44,10 @@
 			</tr>
 		</table>
 	</form>
+
+	@foreach($errors->all() as $error)
+		{{$error}} <br>
+	@endforeach
 
 </body>
 </html>

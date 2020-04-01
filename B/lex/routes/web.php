@@ -26,7 +26,7 @@ Route::group(['middleware'=>['sess']], function(){
 	Route::get('/home/view_users', 'HomeController@list')->name('home.list')->middleware('sess');
 	Route::get('/home/details/{id}', ['as'=>'home.show','uses'=>'HomeController@show']);
 
-	Route:group(['middleware'=>['type']], function(){
+	Route::group(['middleware'=>['type']], function(){
 		Route::get('/home/add', 'HomeController@add')->name('home.add')->middleware('sess');
 		Route::post('/home/add', 'HomeController@create');
 		Route::get('/home/edit/{id}', 'HomeController@edit')->name('home.edit');
@@ -36,4 +36,5 @@ Route::group(['middleware'=>['sess']], function(){
 	});
 });
 
-
+Route::resource('accounts', 'AccountController');
+Route::resource('accounttype', 'AccountTypeController');

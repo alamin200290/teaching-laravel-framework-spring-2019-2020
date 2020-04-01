@@ -33,6 +33,7 @@ class LoginController extends Controller
     	
     	if($user != null){
             $req->session()->put('username', $req->uname);
+            $req->session()->put('type', $user->type);
     		return redirect()->route('home.index');
     	}else{
             $req->session()->flash('msg', 'invalid username/password');
